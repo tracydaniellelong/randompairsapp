@@ -1,15 +1,20 @@
 require 'sinatra'
+require_relative 'randompairs.rb'
 
 get '/' do
 	erb :input
 end
 
 post '/input' do
-	name1 = params[:name1]
-	redirect '/pairs?name1=' + name1
+	names = params[:names].join
+	redirect '/pairs?names=' + names
 end
 
 get '/pairs' do
-	name1 = params[:name1]
-	erb :pairs, locals: {name1: name1}
+	names = params[:names]
+	erb :pairs, locals: {names: names}
+end
+
+post '/pairs' do
+	names = params[:names]
 end
