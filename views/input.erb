@@ -1,5 +1,17 @@
+
 <form method = 'post' action = '/input'>	
 	Enter name:
-	<input type = "text" name = "names[]" pattern = "[A-Za-z]{1-15}"><button onclick="handlers.addnames()">Add</button><br>
- 	<input type = "submit" value = "pair"><br>
+	<input type = "text" name = "names"><button type = "button" onclick = "nameList.addNames(names)">Add</button><br>
+	<input type = "submit" value = "submit"><br>
 </form>
+
+<script>
+	var nameList = {
+		nameArray: [],
+		addNames: function(){
+			this.nameArray.push(names);
+			console.log(this.nameArray)
+		}
+	};
+</script>
+

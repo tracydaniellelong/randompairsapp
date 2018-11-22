@@ -4,10 +4,12 @@ def random_pair(pair)
 	to_pair.each do |x|
 		case 
 		when x.length == 2
-			ary.push(x)
+			pairs.push(x)
 		when x.length == 1
- 			ary[rand(ary.length)].concat(x)
+ 			pairs[rand(pairs.length)].concat(x)
 		end
 	end
 	return pairs
 end
+
+
