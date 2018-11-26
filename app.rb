@@ -6,14 +6,22 @@ get '/' do
 end
 
 post '/input' do
-	names = params[:names]
+	if params[:names].class != Array
+        redirect '/'
+    end
+    names = params[:names].join(",")
+    params[:names].each do |v|
+        if v == "" || v == " "
+            redirect '/'
+        end
+    end
 	redirect '/pairs?names=' + names
 end
 
 get '/pairs' do
-	nameArray = params[:nameArray].join(',')
-	pairs = random_pair(:names)
-	erb :pairs, locals: {nameArray: nameArray, pairs: pairs}
+	names = params[:names].split(',')
+	pairs = random_pair(names)
+	erb :pairs, locals: {names: names, pairs: pairs}
 end
 
 post '/pairs' do

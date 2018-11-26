@@ -1,17 +1,25 @@
 
-<form method = 'post' action = '/input'>	
-	Enter name:
-	<input type = "text" name = "names"><button type = "button" onclick = "nameList.addNames(names)">Add</button><br>
-	<input type = "submit" value = "submit"><br>
+<form id = 'f' method = 'post' action = '/input'>	
+	<div id="box2">
+	<button type="button" onclick="newInput()">Add Name</button>
+	<br>
+	</div>
+	<input type="submit" value="Submit">
 </form>
 
 <script>
-	var nameList = {
-		nameArray: [],
-		addNames: function(){
-			this.nameArray.push(names);
-			console.log(this.nameArray)
-		}
-	};
+function newInput() {
+  var x = document.createElement("input");
+  var f = document.getElementById("f");
+  var v = document.getElementById("box2");
+  var brk = document.createElement('br');
+  x.setAttribute("type", 'text');
+  x.setAttribute("name", "names[]");
+  x.setAttribute("value", "");
+  x.setAttribute("maxlength", "18")
+  f.appendChild(x);
+  v.appendChild(x);
+  v.appendChild(brk);
+}
 </script>
 
